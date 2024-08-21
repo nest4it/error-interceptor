@@ -1,0 +1,48 @@
+{
+  "name": "@n4it/global-error-interceptor",
+  "version": "0.0.1",
+  "description": "Better error handling for NestJS",
+  "main": "./dist/index.js",
+  "scripts": {
+    "release": "semantic-release",
+    "build": "tsc"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "url": "https://github.com/nest4it/error-interceptor"
+  },
+  "files": [
+    "./dist"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "nestjs",
+    "nest",
+    "error handling",
+    "n4it"
+  ],
+  "author": "Robert-Jan Kuyper <info@n4it.nl> (https://n4it.nl)",
+  "bugs": {
+    "url": "https://github.com/nest4it/error-handling/issues",
+    "email": "info@n4it.nl"
+  },
+  "license": "GPL-3.0",
+  "devDependencies": {
+    "@semantic-release/commit-analyzer": "^13.0.0",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^10.1.6",
+    "@semantic-release/npm": "^10.0.4",
+    "@semantic-release/release-notes-generator": "^14.0.1",
+    "@types/node": "^20.4.5",
+    "semantic-release": "^21.0.7",
+    "typescript": "^5.1.6"
+  },
+  "dependencies": {
+    "@nestjs/common": "^10.4.1",
+    "@nestjs/core": "^10.4.1"
+  }
+}
