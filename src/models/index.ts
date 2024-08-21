@@ -1,12 +1,11 @@
 import { ArgumentsHost, HttpException } from "@nestjs/common";
 
 export type ErrorInterceptorModuleConfig = {
-
   /**
-   * A map of errors that should return a specific error status code.
+   * A map of error function names that should return a specific error status code.
+   * The key is a constructor function of the error class (which could be any class that extends Error).
    */
-
-  customErrorToStatusCodeMap?: Map<Error, number>;
+  customErrorToStatusCodeMap?: Map<string, number>;
 
   /**
    * A flag that indicates whether application errors should be logged.
@@ -14,8 +13,8 @@ export type ErrorInterceptorModuleConfig = {
   shouldLogErrors?: boolean;
 
   /**
- * A flag that indicates whether failures should be logged.
- */
+   * A flag that indicates whether failures should be logged.
+   */
   shouldLogFailures?: boolean;
 
   /**

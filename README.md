@@ -46,9 +46,9 @@ import {
       // if you want to extend the working with custom errors
       // for example, with TypeORM errors:
       customErrorToStatusCodeMap: new Map([
-        [EntityNotFoundError, 404],
-        [CannotCreateEntityIdMapError, 422],
-        [QueryFailedError, 400],
+        [EntityNotFoundError.name, 404],
+        [CannotCreateEntityIdMapError.name, 422],
+        [QueryFailedError.name, 400],
       ])
     }),
   ],

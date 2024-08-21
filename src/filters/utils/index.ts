@@ -34,7 +34,7 @@ export const getStatus = (exception: HttpException | Error) =>
     ? exception.getStatus()
     : 500;
 
-export const createExceptionObj = (exception: HttpException | Error, host: ArgumentsHost, customErrorToStatusCodeMap: Map<Error, number>) => {
+export const createExceptionObj = (exception: HttpException | Error, host: ArgumentsHost, customErrorToStatusCodeMap: Map<string, number>) => {
   const ctx = host.switchToHttp();
   const response = ctx.getResponse();
   const request = ctx.getRequest();
@@ -47,7 +47,7 @@ export const createExceptionObj = (exception: HttpException | Error, host: Argum
     method: request.method,
     message: getErrorResponse(exception) ?? "Internal Server Error",
     error: response.error,
-    status: customErrorToStatusCodeMap.get(exception) ?? getStatus(exception) ?? response.statusCode ?? 500,
+    status: customErrorToStatusCodeMap.get(exception.name) ?? getStatus(exception) ?? response.statusCode ?? 500,
 
     stack: stack ? { stack } : {},
     res: response,
