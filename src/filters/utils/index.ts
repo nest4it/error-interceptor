@@ -49,7 +49,7 @@ export const createExceptionObj = (exception: HttpException | Error, host: Argum
     error: response.error,
     status: customErrorToStatusCodeMap.get(exception.name) ?? getStatus(exception) ?? response.statusCode ?? 500,
 
-    stack: stack ? { stack } : {},
+    stack: JSON.stringify(stack ? { stack } : {}),
     res: response,
   }
 }

@@ -37,7 +37,6 @@ export class GlobalExceptionFilter implements ExceptionFilter {
       this.logger.warn(
         createLogLine(err),
         err.stack,
-        exception.cause,
       );
     }
 
@@ -47,7 +46,6 @@ export class GlobalExceptionFilter implements ExceptionFilter {
       this.logger.error(
         createLogLine(err),
         err.stack,
-        exception.cause,
       );
     }
 

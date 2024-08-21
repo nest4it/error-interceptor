@@ -1,5 +1,5 @@
 # @n4it/global-error-interceptor
-A NestJS module for catching and handling errors globally.
+A NestJS module for catching and handling errors globally. The `ErrorInterceptorModule` will catch all errors thrown in your NestJS application by default.
 
 ## Installation
 To install the module, use npm:
@@ -56,7 +56,24 @@ import {
 export class AppModule {}
 ```
 
-The `ErrorInterceptorModule` will catch all errors thrown in your NestJS application by default.
+### Error handling for unauthorized exceptions
+You can extend the module to invoke a function when an unauthorized exception is throwed.
+
+```typescript
+import { ErrorInterceptorModule } from "@n4it/global-error-interceptor";
+import { Module, ArgumentsHost, HttpException } from "@nestjs/common";
+
+@Module({
+  imports: [
+    ErrorInterceptorModule.register({
+      onUnauthorized: (exception: HttpException, host: ArgumentsHost) => {
+        // do something here, for example, delete session cookies
+      }
+    }),
+  ],
+})
+export class AppModule {}
+```
 
 ## License
 This project is licensed under the GNU General Public License v3.0 - see the LICENSE file for details.
