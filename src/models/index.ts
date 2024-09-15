@@ -10,12 +10,12 @@ export type ErrorInterceptorModuleConfig = {
   /**
    * A flag that indicates whether application errors should be logged.
    */
-  shouldLogErrors?: boolean;
+  logErrors?: boolean;
 
   /**
    * A flag that indicates whether failures should be logged.
    */
-  shouldLogFailures?: boolean;
+  logFailures?: boolean;
 
   /**
    * A function that is called when an unauthorized exception is thrown.
