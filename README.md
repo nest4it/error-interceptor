@@ -20,8 +20,8 @@ import { Module } from "@nestjs/common";
 @Module({
   imports: [
     ErrorInterceptorModule.register({
-      shouldLogErrros: true,
-      shouldLogFailures: true,
+      logErrros: true,
+      logFailures: true,
     }),
   ],
 })
