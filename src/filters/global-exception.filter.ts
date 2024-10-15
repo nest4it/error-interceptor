@@ -34,19 +34,13 @@ export class GlobalExceptionFilter implements ExceptionFilter {
     // http exceptions are considered failures,
     // they are recoverable by user input
     if (exception instanceof HttpException && this.options.logFailures) {
-      this.logger.warn(
-        createLogLine(err),
-        err.stack,
-      );
+      this.logger.warn(...createLogLine(err));
     }
 
     // internal exceptions are considered errors
     // they are not recoverable by user input
     if (!(exception instanceof HttpException) && this.options.logErrors) {
-      this.logger.error(
-        createLogLine(err),
-        err.stack,
-      );
+      this.logger.error(...createLogLine(err));
     }
 
     httpAdapter.reply(err.res, toExceptionResponse(err), err.status);

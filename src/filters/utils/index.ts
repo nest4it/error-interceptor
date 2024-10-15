@@ -63,5 +63,22 @@ export const toExceptionResponse = (err: ExceptionObj) => ({
   time: err.time,
 })
 
-export const createLogLine = (err: ExceptionObj) => 
-  `'[${err.method}] ${err.path} (${err.status})' failed with ${err.message}`;
+export const createLogLine = (err: ExceptionObj): [
+  unknown,
+  string,
+  {
+    method: string,
+    path: string,
+    status: number,
+    stack: string,
+  }
+] => [
+  err.message,
+  err.stack,
+  {
+    method: err.method,
+    path: err.path,
+    status: err.status,
+    stack: err.stack,
+  }
+];
