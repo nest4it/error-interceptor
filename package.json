@@ -1,6 +1,6 @@
 {
   "name": "@n4it/global-error-interceptor",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "Better error handling for NestJS",
   "main": "./dist/index.js",
   "scripts": {
