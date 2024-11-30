@@ -63,7 +63,7 @@ export const toExceptionResponse = (err: ExceptionObj) => ({
   time: err.time,
 })
 
-export const createLogLine = (err: ExceptionObj): [
+export const createLogLine = (err: ExceptionObj, severity: string): [
   unknown,
   string,
   {
@@ -71,6 +71,7 @@ export const createLogLine = (err: ExceptionObj): [
     path: string,
     status: number,
     stack: string,
+    severity: string,
   }
 ] => [
   err.message,
@@ -80,5 +81,6 @@ export const createLogLine = (err: ExceptionObj): [
     path: err.path,
     status: err.status,
     stack: err.stack,
+    severity,
   }
 ];
