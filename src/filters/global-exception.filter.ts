@@ -10,7 +10,7 @@ import {
 } from "@nestjs/common";
 import { MODULE_OPTIONS_TOKEN } from "../error-interceptor.configure-module";
 import { ErrorInterceptorModuleConfig } from "../models";
-import { createLogLine, createExceptionObj, toExceptionResponse } from "./utils";
+import { createLogLine, createExceptionObj, toExceptionResponse, isRecoverable, isInternalError } from "./utils";
 import { HttpAdapterHost } from "@nestjs/core";
 
 @Injectable()
@@ -33,13 +33,13 @@ export class GlobalExceptionFilter implements ExceptionFilter {
 
     // http exceptions are considered failures,
     // they are recoverable by user input
-    if (exception instanceof HttpException && this.options.logFailures) {
+    if (isRecoverable(err) && this.options.logFailures) {
       this.logger.warn(...createLogLine(err, "WARNING"));
     }
 
     // internal exceptions are considered errors
     // they are not recoverable by user input
-    if (!(exception instanceof HttpException) && this.options.logErrors) {
+    if (isInternalError(err) && this.options.logErrors) {
       this.logger.error(...createLogLine(err, "ERROR"));
     }
 

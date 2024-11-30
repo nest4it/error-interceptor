@@ -63,6 +63,9 @@ export const toExceptionResponse = (err: ExceptionObj) => ({
   time: err.time,
 })
 
+export const isRecoverable = (err: ExceptionObj) => err.status < 500;
+export const isInternalError = (err: ExceptionObj) => err.status >= 500;
+
 export const createLogLine = (err: ExceptionObj, severity: string): [
   unknown,
   string,
